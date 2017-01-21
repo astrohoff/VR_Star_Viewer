@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 2100000, guid: e222162ddb8d34547a133b673221b195, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2722599e20a18ef448cb7246ee33ccc7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -91,6 +91,62 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &260760436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 260760437}
+  - component: {fileID: 260760439}
+  - component: {fileID: 260760438}
+  m_Layer: 0
+  m_Name: Stars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &260760437
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 260760436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 30, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &260760438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 260760436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be99b62cdd376b429d54e23a6e0320c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  database: {fileID: 4900000, guid: 2be988232fb78044d8b2832910510967, type: 3}
+  readLimit: 120000
+  starGenerator: {fileID: 260760439}
+--- !u!114 &260760439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 260760436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262b4dd6ac8a9c646bb168ca31424f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starMaterial: {fileID: 2100000, guid: f7c7115e7a626c14cbeb1c5cc815d059, type: 2}
 --- !u!1001 &481967475
 Prefab:
   m_ObjectHideFlags: 0
@@ -133,67 +189,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &610389553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 610389555}
-  - component: {fileID: 610389554}
-  - component: {fileID: 610389557}
-  m_Layer: 0
-  m_Name: Stars
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &610389554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 610389553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 262b4dd6ac8a9c646bb168ca31424f65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  starMaterial: {fileID: 2100000, guid: f7c7115e7a626c14cbeb1c5cc815d059, type: 2}
---- !u!4 &610389555
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 610389553}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &610389557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 610389553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be99b62cdd376b429d54e23a6e0320c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  database: {fileID: 4900000, guid: 2be988232fb78044d8b2832910510967, type: 3}
-  readLimit: 120000
-  starGenerator: {fileID: 610389554}
---- !u!1 &729813367
-=======
-  starCount: 1000
-  distance: 100
 --- !u!1 &1962291694
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +253,6 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 85.452, y: -158.447, z: -198.618}
 --- !u!1 &2080469253
->>>>>>> katie
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -339,46 +333,19 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2080469253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1962291694
-=======
   m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2103112732
->>>>>>> katie
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1962291696}
-  - component: {fileID: 1962291695}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1962291695
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1962291694}
-=======
   - component: {fileID: 2103112735}
   - component: {fileID: 2103112734}
   - component: {fileID: 2103112733}
@@ -398,27 +365,26 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: c398f0b476fc4564ead048c56e45f6d1, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &2103112734
 Terrain:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2103112732}
->>>>>>> katie
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: c398f0b476fc4564ead048c56e45f6d1, type: 2}
-  m_TreeDistance: 5000
-  m_TreeBillboardDistance: 50
-  m_TreeCrossFadeLength: 5
-  m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
-  m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 5
-  m_SplatMapDistance: 1000
+  m_TreeDistance: 674
+  m_TreeBillboardDistance: 5
+  m_TreeCrossFadeLength: 0
+  m_TreeMaximumFullLODCount: 0
+  m_DetailObjectDistance: 0
+  m_DetailObjectDensity: 0
+  m_HeightmapPixelError: 1
+  m_SplatMapDistance: 0
   m_HeightmapMaximumLOD: 0
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_DrawHeightmap: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
@@ -442,5 +408,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
