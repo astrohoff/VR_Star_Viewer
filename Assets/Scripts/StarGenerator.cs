@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StarGenerator : MonoBehaviour {
     private Mesh starMesh;
-
+    public Material starMaterial;
 	// Use this for initialization
 	void Awake () {
         // Add "Mesh" components to object.
@@ -13,10 +13,7 @@ public class StarGenerator : MonoBehaviour {
         // Create empty mesh.
         starMesh = new Mesh();
         meshFilter.mesh = starMesh;
-        // Add white material.
-        Material mat = new Material(Shader.Find("Unlit/Color"));
-        mat.color = Color.white;
-        meshRend.material = mat;
+        meshRend.material = starMaterial;
 	}
 	
 	// Update is called once per frame
@@ -24,15 +21,18 @@ public class StarGenerator : MonoBehaviour {
 		
 	}
 
-    public void GenerateStars(Vector3[] positions, Color[] colors, float distance)
+    public void GenerateStars(StarInfo[] starInfos, float distance)
     {
-        Debug.Log("Generating stars");
-        // Set stars to given distance.
-        int[] indices = new int[positions.Length];
-        for(int i = 0; i < positions.Length; i++)
+        
+        Vector3[] positions = new Vector3[starInfos.Length];
+        int[] indices = new int[starInfos.Length];
+        // Make all stars white for now.
+        Color[] colors = new Color[starInfos.Length];
+        for(int i = 0; i < starInfos.Length; i++)
         {
-            positions[i] = positions[i].normalized * distance;
-            indices[i] = i;
+            indices[i] = starInfos[i].hygID;
+            positions[i] = starInfos[i].position.normalized * distance;
+            colors[i] = Color.white;
         }
         // Set mesh attributes.
         starMesh.vertices = positions;

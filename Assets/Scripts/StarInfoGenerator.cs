@@ -16,7 +16,7 @@ public class StarInfoGenerator : MonoBehaviour {
             positions[i] = Random.onUnitSphere * distance;
             colors[i] = new Color(Random.Range(0, 255), Random.Range(0, 255), Random.Range(0, 255));
         }
-        GetComponent<StarGenerator>().GenerateStars(positions, colors, distance);
+        //GetComponent<StarGenerator>().GenerateStars(positions, colors, distance);
 	}
 	
 	// Update is called once per frame
