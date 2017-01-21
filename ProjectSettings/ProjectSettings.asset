@@ -6,11 +6,11 @@ PlayerSettings:
   serializedVersion: 10
   productGUID: 92c75fe6e2ff8c04cb9ba0f02983b5a6
   AndroidProfiler: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 2
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: KYMA
   productName: VR_Star_Viewer
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.Company.ProductName
+  bundleIdentifier: com.kyma.VRStarViewer
   bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0
@@ -126,7 +126,7 @@ PlayerSettings:
   xboxOneDisableKinectGpuReservation: 0
   protectGraphicsMemory: 0
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 9
+  AndroidMinSdkVersion: 19
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
