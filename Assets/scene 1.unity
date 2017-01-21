@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   database: {fileID: 4900000, guid: 2be988232fb78044d8b2832910510967, type: 3}
-  readLimit: 60000
+  readLimit: 120000
   starGenerator: {fileID: 610389554}
 --- !u!1 &729813367
 GameObject:

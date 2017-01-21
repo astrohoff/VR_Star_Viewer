@@ -3,19 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StarGenerator : MonoBehaviour {
-    private Mesh starMesh;
     public Material starMaterial;
-	// Use this for initialization
-	void Awake () {
-        // Add "Mesh" components to object.
-        MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
-        MeshRenderer meshRend = gameObject.AddComponent<MeshRenderer>();
-        // Create empty mesh.
-        starMesh = new Mesh();
-        meshFilter.mesh = starMesh;
-        meshRend.material = starMaterial;
-	}
-	
+    private static int MaxVertices = 65000;
 	// Update is called once per frame
 	void Update () {
 		
@@ -23,23 +12,33 @@ public class StarGenerator : MonoBehaviour {
 
     public void GenerateStars(StarInfo[] starInfos, float distance)
     {
-        
-        Vector3[] positions = new Vector3[starInfos.Length];
-        int[] indices = new int[starInfos.Length];
-        // Make all stars white for now.
-        Color[] colors = new Color[starInfos.Length];
-        for(int i = 0; i < starInfos.Length; i++)
+        int starIndex = 0;
+        int meshNum = 0;
+        while (starIndex < starInfos.Length)
         {
-            indices[i] = starInfos[i].hygID;
-            positions[i] = starInfos[i].position.normalized * distance;
-            colors[i] = Color.white;
+            GameObject starsSegment = new GameObject("Star Mesh " + meshNum);
+            starsSegment.transform.position = transform.position;
+            starsSegment.transform.SetParent(transform, true);
+            Mesh mesh = new Mesh();
+            List<Vector3> vertices = new List<Vector3>();
+            List<Color> colors = new List<Color>();
+            List<int> indices = new List<int>();
+            for (int meshIndex = 0; meshIndex < MaxVertices && starIndex < starInfos.Length; meshIndex++)
+            {
+                vertices.Add(starInfos[starIndex].position.normalized * distance);
+                colors.Add(Color.white);
+                indices.Add(meshIndex);
+                starIndex++;
+            }
+            mesh.SetVertices(vertices);
+            mesh.SetColors(colors);
+            mesh.SetIndices(indices.ToArray(), MeshTopology.Points, 0);
+            MeshFilter meshFilter = starsSegment.AddComponent<MeshFilter>();
+            meshFilter.mesh = mesh;
+            MeshRenderer meshRend = starsSegment.AddComponent<MeshRenderer>();
+            meshRend.material = starMaterial;
+            meshNum++;
         }
-        // Set mesh attributes.
-        starMesh.vertices = positions;
-        starMesh.colors = colors;
-        starMesh.SetIndices(indices, MeshTopology.Points, 0);
-        // Update the mesh rendering bounds.
-        starMesh.RecalculateBounds();
     }
 
 }
