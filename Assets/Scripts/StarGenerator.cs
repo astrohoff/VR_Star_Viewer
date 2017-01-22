@@ -6,13 +6,14 @@ public class StarGenerator : MonoBehaviour {
     public Material starMaterial;
     public float minMagnitude = 6;
     public float maxMagnitude = 0;
+    public float distance = 1000;
     private static int MaxVertices = 65000;
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    public void GenerateStars(StarInfo[] starInfos, float distance)
+    public void GenerateStars(StarInfo[] starInfos)
     {
         float maxBrightness = Mathf.Pow(2.512f, minMagnitude - maxMagnitude);
         //Debug.Log("Max brightness: " + maxBrightness);
@@ -32,13 +33,11 @@ public class StarGenerator : MonoBehaviour {
             {
                 if(starInfos[starIndex].magnitude < minMagnitude)
                 {
-                    //Debug.Log("Star info: " + starInfos[starIndex].ToString());
                     vertices.Add(starInfos[starIndex].position.normalized * distance);
                     float brightness = Mathf.Pow(2.512f, minMagnitude - starInfos[starIndex].magnitude);
-                    //Debug.Log("brightness: " + brightness);
                     float rgbVal = brightness / maxBrightness;
-                    colors.Add(Color.white * rgbVal);
-                    //Debug.Log((Color.white * rgbVal).ToString());
+                    Color col = (Color)starInfos[starIndex].color * rgbVal;
+                    colors.Add(col);
                     indices.Add(meshIndex);
                     meshIndex++;
                 }

@@ -36,19 +36,29 @@ public class HYGParser : MonoBehaviour{
                 string[] fields = line.Split(new char[] { ',' });
                 
                 int id = Convert.ToInt32(fields[0]);
+                string name = fields[7];
                 float magnitude = Convert.ToSingle(fields[13]);
-                string colorIndex = fields[16];
+                string fullSpectrum = fields[15];
+                char spectrum;
+                if (fullSpectrum == "")
+                {
+                    spectrum = '\0';
+                }
+                else
+                {
+                    spectrum = fullSpectrum[0];
+                }
                 float x = Convert.ToSingle(fields[17]);
                 float y = Convert.ToSingle(fields[18]);
                 float z = Convert.ToSingle(fields[19]);
                 float luminosity = Convert.ToSingle(fields[33]);
                 Vector3 position = new Vector3(x, y, z);
-                StarInfo sInfo = new StarInfo(id, magnitude, position, colorIndex, luminosity);
+                StarInfo sInfo = new StarInfo(id, magnitude, position, spectrum, luminosity, name);
                 starInfos.Add(sInfo);
                 //Debug.Log(sInfo.ToString());
                 readCount++;
             }
         }
-        starGenerator.GenerateStars(starInfos.ToArray(), 100);
+        starGenerator.GenerateStars(starInfos.ToArray());
     }
 }
