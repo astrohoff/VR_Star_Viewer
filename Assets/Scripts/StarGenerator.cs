@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StarGenerator : MonoBehaviour {
     public Material starMaterial;
+    public float minMagnitude = 6;
+    public float maxMagnitude = 0;
     private static int MaxVertices = 65000;
 	// Update is called once per frame
 	void Update () {
@@ -12,6 +14,8 @@ public class StarGenerator : MonoBehaviour {
 
     public void GenerateStars(StarInfo[] starInfos, float distance)
     {
+        float maxBrightness = Mathf.Pow(2.512f, minMagnitude - maxMagnitude);
+        //Debug.Log("Max brightness: " + maxBrightness);
         int starIndex = 0;
         int meshNum = 0;
         while (starIndex < starInfos.Length)
@@ -23,11 +27,22 @@ public class StarGenerator : MonoBehaviour {
             List<Vector3> vertices = new List<Vector3>();
             List<Color> colors = new List<Color>();
             List<int> indices = new List<int>();
-            for (int meshIndex = 0; meshIndex < MaxVertices && starIndex < starInfos.Length; meshIndex++)
+            int meshIndex = 0;
+            while (meshIndex < MaxVertices && starIndex < starInfos.Length)
             {
-                vertices.Add(starInfos[starIndex].position.normalized * distance);
-                colors.Add(Color.white);
-                indices.Add(meshIndex);
+                if(starInfos[starIndex].magnitude < minMagnitude)
+                {
+                    //Debug.Log("Star info: " + starInfos[starIndex].ToString());
+                    vertices.Add(starInfos[starIndex].position.normalized * distance);
+                    float brightness = Mathf.Pow(2.512f, minMagnitude - starInfos[starIndex].magnitude);
+                    //Debug.Log("brightness: " + brightness);
+                    float rgbVal = brightness / maxBrightness;
+                    colors.Add(Color.white * rgbVal);
+                    //Debug.Log((Color.white * rgbVal).ToString());
+                    indices.Add(meshIndex);
+                    meshIndex++;
+                }
+                
                 starIndex++;
             }
             mesh.SetVertices(vertices);
